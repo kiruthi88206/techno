@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: technical-document-mapper
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    healthCheckPath: /api/health
+    envVars:
+      - key: SECRET_KEY
+        generateValue: true
+      - key: MAX_UPLOAD_SIZE_MB
+        value: "25"
+      - key: ENABLE_SENTENCE_TRANSFORMERS
+        value: "0"
